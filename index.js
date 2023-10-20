@@ -37,6 +37,20 @@ async function run() {
 
 
     })
+    app.delete('/product/:id', async(req ,res)=>{
+        const id = req.params.id;
+       const query = {_id: new Object (id)}
+       const result =await productCollation.deleteOne(query)
+        res.send(result);
+
+    })
+    app.get('/product/:id', async(req ,res)=>{
+        const id = req.params.id;
+       const query = {_id: new Object (id)}
+       const result =await productCollation.deleteOne(query)
+        res.send(result);
+
+    })
 
     app.post('/product', async(req ,res)=>{
         const newproduct =req.body;
