@@ -53,9 +53,25 @@ async function run() {
 
     }) 
     app.put('/product/:id', async(req,res)=>{
+           const id = req.params.id;
       const filter = {_id: new ObjectId(id)}
       const options ={upsert:true};
-      
+
+       const updateproduct =req.body;
+      const product ={
+        $set:{
+          Name:updateproduct.Name, 
+          Brand_Name:updateproduct.Brand_Name, 
+          Type:updateproduct.Type,
+           Price:updateproduct.Price, 
+          Short_description:updateproduct.Short_description,
+           Rating:updateproduct.Rating, 
+           Image:updateproduct.Image
+        }
+
+      }
+      const result =await productCollation.updateOne(filter,product,options)
+        res.send(result);
 
     })
 
