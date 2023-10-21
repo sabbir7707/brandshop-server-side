@@ -53,8 +53,10 @@ async function run() {
 
     }) 
     app.put('/product/:id', async(req,res)=>{
-      const filter = {_id}
+      const filter = {_id: new ObjectId(id)}
+      const options ={upsert:true};
       
+
     })
 
     app.post('/product', async(req ,res)=>{
